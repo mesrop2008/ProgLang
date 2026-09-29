@@ -422,3 +422,191 @@ for (const auto& [name, a] : age)
 ![Варианты](07/variants.png)
 
 
+
+### Задачи олимп
+
+#### 1
+
+```python
+name1 = input()
+name2 = input()
+
+print(f"{name1} and {name2} was here")
+```
+
+#### 2
+
+```python
+line1 = input().split()
+line2 = input().split()
+
+print(line1[0], line2[0], line1[1], line2[1], line1[2], sep=',')
+```
+
+#### 3
+
+```python
+word1, count1 = input().split()
+word2, count2 = input().split()
+word3, count3 = input().split()
+
+total = len(word1) * int(count1) + len(word2) * int(count2) + len(word3) * int(count3)
+
+print(total)
+```
+
+#### 4
+
+```python
+string = input()
+
+border_len = len(string) + 4
+border = '*' * border_len
+
+print(border)
+print('* ' + string + ' *')
+print(border)
+```
+
+#### 5
+
+```python
+h1, m1, s1 = map(int, input().split())
+h2, m2, s2 = map(int, input().split())
+
+start_seconds = h1 * 3600 + m1 * 60 + s1
+finish_seconds = h2 * 3600 + m2 * 60 + s2
+
+print(finish_seconds - start_seconds)
+```
+
+#### 6
+
+```python
+n = int(input())
+if n == 1:
+    print("pusk")
+else:
+    print(n-1)
+```
+
+#### 7
+
+```python
+a, b, c = map(int, input().split())
+
+if a == b == c == 3:
+    print("hole")
+else:
+    print(a + b + c)
+```
+
+#### 8
+
+```python
+a, b, c = input().split()
+
+if len(a) > len(b) and len(a) > len(c):
+    print(a)
+elif len(b) > len(a) and len(b) > len(c):
+    print(b)
+else:
+    print(c)
+```
+
+#### 9
+
+```python
+a, b = map(int, input().split())
+
+if a > b:
+    print(">")
+elif a < b:
+    print("<")
+else:
+    print("=")
+```
+
+#### 10
+
+```python
+a, b, c = map(int, input().split())
+
+if a < b:
+    left = a
+    right = b
+else:
+    left = b
+    right = a
+
+if c < left:
+    print(left - c)
+elif c > right:
+    print(c - right)
+else:
+    print(0)
+```
+
+#### 11
+
+```python
+n = int(input())
+
+while n != 1:
+    print(n, end=" ")
+    if n % 2 != 0:
+        n = 3 * n + 1
+    else:
+        n = n // 2
+
+print(1)
+```
+
+#### 12
+
+```python
+n = int(input())
+
+ans = 1
+while ans * 2 <= n:
+    ans = ans * 2
+
+print(ans)
+```
+
+#### 13
+
+```python
+ans = 1
+while True:
+    name = input()
+    if name == "Petr":
+        print(ans)
+        break
+    ans = ans + 1
+```
+
+#### 14
+
+```python
+n, a = map(int, input().split())
+
+cnt = 0
+current = a
+
+while cnt < n:
+    if current % 2 != 0 and current % 3 != 0 and current % 5 != 0 and current % 7 != 0:
+        print(current, end=" ")
+        cnt = cnt + 1
+    current = current + 1
+```
+
+#### 15
+
+```python
+a, b = map(int, input().split())
+
+while b:
+    a, b = b, a % b
+print(a)
+```
