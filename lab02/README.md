@@ -280,25 +280,6 @@ iteration-statement:
     for ( for-range-declaration : for-range-initializer ) statement
 ```
 
-Вспомогательные правила, на которые ссылаются строки выше (там же, A.5):
-
-```
-condition:
-    expression
-    attribute-specifier-seq opt decl-specifier-seq declarator brace-or-equal-initializer
-
-init-statement:
-    expression-statement
-    simple-declaration
-
-for-range-declaration:
-    attribute-specifier-seq opt decl-specifier-seq declarator
-    attribute-specifier-seq opt decl-specifier-seq ref-qualifier opt [ identifier-list ]
-
-for-range-initializer:
-    expr-or-braced-init-list
-```
-
 Индекс `opt` означает, что элемент необязателен.
 
 Как видно из правил, есть **4** инструкции циклов.
