@@ -43,41 +43,55 @@
 Файл [02/main.cpp](02/main.cpp). Функция `show` печатает запись литерала, его значение и тип через `typeid`. В g++ сокращения такие: `i` — `int`, `j` — `unsigned int`, `l` — `long`, `m` — `unsigned long`, `x` — `long long`, `y` — `unsigned long long`, `c` — `char`.
 
 ```
-42	= 42	i
-052	= 42	i
-0x2A	= 42	i
-0X2a	= 42	i
-0b101010	= 42	i
-0B101010	= 42	i
-1'000'000	= 1000000	i
-0b1010'1010	= 170	i
-0xFF'FF	= 65535	i
-42u	= 42	j
-42U	= 42	j
-42l	= 42	l
-42L	= 42	l
-42ul	= 42	m
-42UL	= 42	m
-42LU	= 42	m
-42ll	= 42	x
-42LL	= 42	x
-42ull	= 42	y
-42ULL	= 42	y
-42LLU	= 42	y
-0x2Aull	= 42	y
-052LL	= 42	x
-0b1u	= 1	j
-2147483647	= 2147483647	i
-2147483648	= 2147483648	x
-0x7FFFFFFF	= 2147483647	i
-0x80000000	= 2147483648	j
-0xFFFFFFFF	= 4294967295	j
-0x100000000	= 4294967296	x
-9223372036854775807	= 9223372036854775807	x
-0xFFFFFFFFFFFFFFFF	= 18446744073709551615	y
--42	= -42	i
--42u	= 4294967254	j
-'A'	= A	c
+#include <iostream>
+#include <typeinfo>
+
+template <typename T>
+void show(const char* text, T value) {
+    std::cout << text << "\t= " << value << "\t" << typeid(value).name() << "\n";
+}
+
+int main() {
+    show("42", 42);
+    show("052", 052);
+    show("0x2A", 0x2A);
+    show("0X2a", 0X2a);
+    show("0b101010", 0b101010);
+    show("0B101010", 0B101010);
+    show("1'000'000", 1'000'000);
+    show("0b1010'1010", 0b1010'1010);
+    show("0xFF'FF", 0xFF'FF);
+
+    show("42u", 42u);
+    show("42U", 42U);
+    show("42l", 42l);
+    show("42L", 42L);
+    show("42ul", 42ul);
+    show("42UL", 42UL);
+    show("42LU", 42LU);
+    show("42ll", 42ll);
+    show("42LL", 42LL);
+    show("42ull", 42ull);
+    show("42ULL", 42ULL);
+    show("42LLU", 42LLU);
+    show("0x2Aull", 0x2Aull);
+    show("052LL", 052LL);
+    show("0b1u", 0b1u);
+
+    show("2147483647", 2147483647);
+    show("2147483648", 2147483648);
+    show("0x7FFFFFFF", 0x7FFFFFFF);
+    show("0x80000000", 0x80000000);
+    show("0xFFFFFFFF", 0xFFFFFFFF);
+    show("0x100000000", 0x100000000);
+    show("9223372036854775807", 9223372036854775807);
+    show("0xFFFFFFFFFFFFFFFF", 0xFFFFFFFFFFFFFFFF);
+
+    show("-42", -42);
+    show("-42u", -42u);
+    show("'A'", 'A');
+    return 0;
+}
 ```
 
 * **Системы счисления.** Десятичная — без префикса. Восьмеричная — начинается с `0` (`052` — это 42, а не 52). Шестнадцатеричная — `0x` или `0X`, цифры `A–F` в любом регистре. Двоичная — `0b` или `0B` (с C++14).
