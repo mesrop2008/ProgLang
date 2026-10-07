@@ -42,7 +42,7 @@
 
 Файл [02/main.cpp](02/main.cpp). Функция `show` печатает запись литерала, его значение и тип через `typeid`. В g++ сокращения такие: `i` — `int`, `j` — `unsigned int`, `l` — `long`, `m` — `unsigned long`, `x` — `long long`, `y` — `unsigned long long`, `c` — `char`.
 
-```
+```cpp
 #include <iostream>
 #include <typeinfo>
 
