@@ -524,3 +524,194 @@ else:
 -1 2 1 3 1 -2 1 3    -> 0     -1/6 = -1/6
 1 1 1 1 3 1 0 1      -> -1    2 < 3
 ```
+
+### Задачи олимп
+
+#### 1
+
+```python
+n = int(input())
+capacity = 15
+left = (n // capacity) * capacity
+stayed = n % capacity
+print(left, stayed)
+```
+
+#### 2
+
+```python
+s = input()
+half = len(s) // 2
+first_half = int(s[:half])
+second_half = int(s[half:])
+print(first_half + second_half)
+```
+
+#### 3
+
+```python
+n = int(input())
+result = n / 3
+print(f"{result:.3f}")
+```
+
+#### 4
+
+```python
+amount = float(input())
+total_kopecks = round(amount * 100)
+rub = total_kopecks // 100
+kop = total_kopecks % 100
+print(f"{rub} rub {kop} kop")
+```
+
+#### 5
+
+```python
+n, m, c, k = map(int, input().split())
+total_sheets_needed = n * m
+needed_to_buy = total_sheets_needed - k
+
+if needed_to_buy <= 0:
+    packs_to_buy = 0
+else:
+    packs_to_buy = (needed_to_buy + 199) // 200
+
+print(packs_to_buy * c)
+```
+
+#### 6
+
+```python
+n, m, k = map(int, input().split())
+total_candies = n * m
+boxes_to_open = (total_candies + k - 1) // k
+print(boxes_to_open)
+```
+
+#### 7
+
+```python
+import math
+
+n_str, t_str = input().split()
+n = int(n_str)
+t = float(t_str)
+
+bpm = (n * 60) / t
+print(math.ceil(bpm))
+```
+
+#### 8
+
+```python
+import math
+
+x, y = map(float, input().split())
+start = math.ceil(x)
+end = math.floor(y)
+
+if start <= end:
+    print(end - start + 1)
+else:
+    print(0)
+```
+
+#### 9
+
+```python
+s = input()
+sum = 0
+
+for char in s:
+    if char.isdigit():
+        sum += int(char)
+
+print(sum)
+```
+
+#### 10
+
+```python
+s = input()
+reversed_s = s[::-1]
+
+result = ""
+for char in reversed_s:
+    if char == "(":
+        result += ")"
+    else:
+        result += "("
+
+print(result)
+```
+
+#### 11
+
+```python
+words = input().split()
+reversed_words = [word[::-1] for word in words]
+print(*(reversed_words))
+```
+
+#### 12
+
+```python
+numbers = map(int, input().split())
+results = []
+
+for n in numbers:
+    for i in range(2, n + 1):
+        if n % i == 0:
+            results.append(i)
+            break
+
+print(*results)
+```
+
+#### 13
+
+```python
+n = int(input())
+total_sum = 1
+
+for i in range(2, int(n**0.5) + 1):
+    if n % i == 0:
+        total_sum += i
+        if i * i != n:
+            total_sum += n // i
+
+print(total_sum)
+```
+
+#### 14
+
+```python
+n = int(input())
+masha = 0
+dasha = 0
+
+for _ in range(n):
+    car_number = int(input())
+    if car_number % 3 == 0:
+        masha += 2
+    else:
+        dasha += 1
+
+print(f"{masha}:{dasha}")
+```
+
+#### 15
+
+```python
+n = int(input())
+max_profit = 0
+
+for _ in range(n):
+    price, cost = map(int, input().split())
+    profit = price - cost
+    if profit > 0:
+        max_profit += profit
+
+print(max_profit)
+```
