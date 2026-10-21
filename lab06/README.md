@@ -324,18 +324,12 @@ for letter in letters:
         globals()[letter + str(i)] = value
         value += 1
 
-print(a0, a1, a99, b0, b99, m50, z0, z99)
-names = [letter + str(i) for letter in letters for i in range(100)]
-values = [globals()[name] for name in names]
-print(len(names), len(set(values)), min(values), max(values))
-```
 
-Вывод:
+
 
 ```
-1 2 100 101 200 1251 2501 2600
-2600 2600 1 2600
-```
+
+
 
 Писать 2600 строк вида `a0 = 1` вручную бессмысленно, поэтому имена переменных строятся в цикле как строки: `letter + str(i)` даёт `'a0'`, `'a1'`, …, `'z99'`.
 
