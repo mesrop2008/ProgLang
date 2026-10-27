@@ -532,3 +532,74 @@ operator>>( operator>>(std::cin, i) , x[i] )
 
 2. **Компилятор GCC (а также MSVC в стандарте C++17)** вычисляет аргументы слева направо.
 В стандарте C++17 было принято [предложение WG21 P0145R3](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0145r3.pdf). Согласно [стандарту ISO/IEC 14882:2017 (C++17), раздел expr.shift](https://timsong-cpp.github.io/cppwp/n4659/expr.shift), в выражении `E1 >> E2` вычисление `E1` строго предшествует вычислению `E2`. Поэтому `cin >> i` гарантированно выполняется до вычисления `x[i]`, и программа выводит **`42`**.
+
+
+---
+
+### Задачи олимп
+
+#### 1
+
+```python
+n = int(input())
+k = (n + 24) // 25
+m = n // k
+print(k, m)
+```
+
+#### 2
+
+```python
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    p, q = map(int, input().split())
+    res = "0."
+    for _ in range(n):
+        p *= 2
+        res += str(p // q)
+        p %= q
+    print(res)
+```
+
+#### 3
+
+```python
+t = int(input())
+ans = []
+for _ in range(t):
+    p1, q1, p2, q2, p3, q3, p4, q4 = map(int, input().split())
+
+    num1 = p1 * q2 + p2 * q1
+    den1 = q1 * q2
+
+    num2 = p3 * q4 + p4 * q3
+    den2 = q3 * q4
+
+    left = num1 * den2
+    right = num2 * den1
+
+    if left == right:
+        ans.append("0")
+    elif left < right:
+        ans.append("-1")
+    else:
+        ans.append("1")
+
+print(" ".join(ans))
+```
+
+#### 4
+
+```python
+n = int(input())
+a = list(map(int, input().split()))
+res = ""
+for x in a:
+    bx = bin(x)[2:]
+    y = len(bx)
+    by = bin(y)[2:]
+    z = len(by)
+    res += "0" * (z - 1) + by + bx[1:]
+print(res)
+```
