@@ -292,7 +292,7 @@ a,b = b,a
 
 #### Решение
 
-Файлы с кодом: [05/main.cpp](05/main.cpp) и [05/explain.cpp](05/explain.cpp).
+Файл с кодом: [05/main.cpp](05/main.cpp).
 
 ##### Ответы на вопросы
 
@@ -350,8 +350,7 @@ s=s+'a';
 
 Файлы с кодом:
 * [06/fast.cpp](06/fast.cpp) — программа с `s += 'a'`;
-* [06/slow.cpp](06/slow.cpp) — программа с `s = s + 'a'`;
-* [06/bench.cpp](06/bench.cpp) — измерение времени выполнения при разном числе итераций $N$.
+* [06/slow.cpp](06/slow.cpp) — программа с `s = s + 'a'`.
 
 ##### Экспериментальные данные
 
@@ -450,7 +449,7 @@ std::cout << s;
 
 #### Решение
 
-Файлы с кодом: [08/main.cpp](08/main.cpp) и [08/debug.cpp](08/debug.cpp).
+Файл с кодом: [08/main.cpp](08/main.cpp).
 
 ##### Анализ выражений
 
@@ -530,22 +529,6 @@ operator>>( operator>>(std::cin, i) , x[i] )
    - Затем вычисляется левый аргумент `operator>>(cin, i)`, который считывает из потока значение `3` в переменную `i`.
    - Затем вызывается внешний `operator>>`, который считывает число `42` по ранее полученной ссылке в `x[0]`.
    - В строке `cout << x[i]` выводится элемент `x[3]`. Поскольку в `x[3]` ничего не записывалось, выводится исходный **`0`**.
-
-Ассемблерный код MSVC в C++14 подтверждает этот порядок:
-```asm
-movsxd  rax, DWORD PTR i$[rsp]
-lea     rcx, QWORD PTR x$[rsp]
-call    vector::operator[]
-mov     QWORD PTR tv77[rsp], rax
-
-lea     rdx, QWORD PTR i$[rsp]
-mov     rcx, std::cin
-call    istream::operator>>
-
-mov     rdx, QWORD PTR tv77[rsp]
-mov     rcx, rax
-call    istream::operator>>
-```
 
 2. **Компилятор GCC (а также MSVC в стандарте C++17)** вычисляет аргументы слева направо.
 В стандарте C++17 было принято [предложение WG21 P0145R3](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0145r3.pdf). Согласно [стандарту ISO/IEC 14882:2017 (C++17), раздел expr.shift](https://timsong-cpp.github.io/cppwp/n4659/expr.shift), в выражении `E1 >> E2` вычисление `E1` строго предшествует вычислению `E2`. Поэтому `cin >> i` гарантированно выполняется до вычисления `x[i]`, и программа выводит **`42`**.
