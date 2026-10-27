@@ -603,3 +603,31 @@ for x in a:
     res += "0" * (z - 1) + by + bx[1:]
 print(res)
 ```
+
+
+#### 5
+
+```python
+s = input().strip()
+i = 0
+ans = []
+
+while i < len(s):
+    zeros = 0
+    while s[i] == '0':
+        zeros += 1
+        i += 1
+
+    z = zeros + 1
+    y = int(s[i:i + z], 2)
+    i += z
+
+    bx = '1' + s[i:i + y - 1]
+    x = int(bx, 2)
+    i += y - 1
+
+    ans.append(x)
+
+print(len(ans))
+print(*ans)
+```
