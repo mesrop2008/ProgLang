@@ -315,21 +315,6 @@ a,b = b,a
 
 Переменная `a` вообще не перезаписывается, а `b` присваивается сама себе. Значения не меняются.
 
-Компилятор `g++` подтверждает этот разбор предупреждениями:
-```
-main.cpp:5:5: warning: left operand of comma operator has no effect [-Wunused-value]
-main.cpp:5:14: warning: right operand of comma operator has no effect [-Wunused-value]
-```
-
-Вывод программы [05/main.cpp](05/main.cpp):
-```
-Before: a=1 b=2
-After:  a=1 b=2
-```
-
-В Python эта запись работает, так как запятая образует кортеж, который затем распаковывается. В C++ для обмена значений используется функция `std::swap(a, b);` из заголовочного файла `<utility>`.
-
----
 
 ### Задание 6 **(2)**
 
